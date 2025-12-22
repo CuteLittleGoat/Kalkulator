@@ -8,37 +8,133 @@
 <body>
   <main class="wrapper">
     <h1>Kalkulator Punktów Doświadczenia</h1>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Sesja</th>
-          <th>Opis</th>
-          <th>XP</th>
-          <th>Uwagi</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Lorem ipsum dolor sit amet</td>
-          <td>50</td>
-          <td>Consectetur adipiscing elit</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Sed do eiusmod tempor</td>
-          <td>35</td>
-          <td>Incididunt ut labore</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Dolore magna aliqua</td>
-          <td>40</td>
-          <td>Ut enim ad minim veniam</td>
-        </tr>
-      </tbody>
-    </table>
-    <p class="note">Dane są przykładowe. W przyszłości pojawi się tutaj pełny kalkulator XP.</p>
+    <p class="subtitle">Oblicz koszt rozwoju atrybutów i umiejętności.</p>
+
+    <div class="tables-grid">
+      <section>
+        <h2 class="section-title">Atrybuty</h2>
+        <table class="table calc-table" id="attributesTable">
+          <thead>
+            <tr>
+              <th>Aktualna wartość</th>
+              <th>Docelowa wartość</th>
+              <th>Koszt XP</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="number" class="current" min="1" max="12" step="1" value="1"></td>
+              <td><input type="number" class="target" min="1" max="12" step="1" value="1"></td>
+              <td class="cost">0</td>
+            </tr>
+            <tr>
+              <td><input type="number" class="current" min="1" max="12" step="1" value="1"></td>
+              <td><input type="number" class="target" min="1" max="12" step="1" value="1"></td>
+              <td class="cost">0</td>
+            </tr>
+            <tr>
+              <td><input type="number" class="current" min="1" max="12" step="1" value="1"></td>
+              <td><input type="number" class="target" min="1" max="12" step="1" value="1"></td>
+              <td class="cost">0</td>
+            </tr>
+            <tr>
+              <td><input type="number" class="current" min="1" max="12" step="1" value="1"></td>
+              <td><input type="number" class="target" min="1" max="12" step="1" value="1"></td>
+              <td class="cost">0</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2 class="section-title">Umiejętności</h2>
+        <table class="table calc-table" id="skillsTable">
+          <thead>
+            <tr>
+              <th>Aktualna wartość</th>
+              <th>Docelowa wartość</th>
+              <th>Koszt XP</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="number" class="current" min="0" max="8" step="1" value="0"></td>
+              <td><input type="number" class="target" min="0" max="8" step="1" value="0"></td>
+              <td class="cost">0</td>
+            </tr>
+            <tr>
+              <td><input type="number" class="current" min="0" max="8" step="1" value="0"></td>
+              <td><input type="number" class="target" min="0" max="8" step="1" value="0"></td>
+              <td class="cost">0</td>
+            </tr>
+            <tr>
+              <td><input type="number" class="current" min="0" max="8" step="1" value="0"></td>
+              <td><input type="number" class="target" min="0" max="8" step="1" value="0"></td>
+              <td class="cost">0</td>
+            </tr>
+            <tr>
+              <td><input type="number" class="current" min="0" max="8" step="1" value="0"></td>
+              <td><input type="number" class="target" min="0" max="8" step="1" value="0"></td>
+              <td class="cost">0</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+
+    <div class="total-cost" aria-live="polite">Całkowity koszt XP: <span id="totalXp">0</span></div>
   </main>
+
+  <script>
+    const attributeCosts = {
+      1: 0, 2: 4, 3: 10, 4: 20, 5: 35, 6: 55, 7: 80, 8: 110, 9: 145, 10: 185, 11: 230, 12: 280
+    };
+    const skillCosts = {
+      0: 0, 1: 2, 2: 6, 3: 12, 4: 20, 5: 30, 6: 42, 7: 56, 8: 72
+    };
+
+    function clampValue(value, min, max) {
+      let parsed = parseInt(value, 10);
+      if (isNaN(parsed)) parsed = min;
+      return Math.min(Math.max(parsed, min), max);
+    }
+
+    function calculateRowCost(current, target, costs) {
+      if (target <= current) return 0;
+      return (costs[target] || 0) - (costs[current] || 0);
+    }
+
+    function recalcTable(tableId, costs, min, max) {
+      let subtotal = 0;
+      document.querySelectorAll(`#${tableId} tbody tr`).forEach(row => {
+        const currentInput = row.querySelector('.current');
+        const targetInput = row.querySelector('.target');
+
+        const currentVal = clampValue(currentInput.value, min, max);
+        const targetVal = clampValue(targetInput.value, min, max);
+
+        currentInput.value = currentVal;
+        targetInput.value = targetVal;
+
+        const rowCost = calculateRowCost(currentVal, targetVal, costs);
+        row.querySelector('.cost').textContent = rowCost;
+        subtotal += rowCost;
+      });
+      return subtotal;
+    }
+
+    function recalcAll() {
+      const attrCost = recalcTable('attributesTable', attributeCosts, 1, 12);
+      const skillCost = recalcTable('skillsTable', skillCosts, 0, 8);
+      document.getElementById('totalXp').textContent = attrCost + skillCost;
+    }
+
+    document.querySelectorAll('#attributesTable input, #skillsTable input').forEach(input => {
+      input.addEventListener('input', recalcAll);
+      input.addEventListener('change', recalcAll);
+    });
+
+    recalcAll();
+  </script>
 </body>
 </html>
