@@ -3,147 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <title>Wrath & Glory</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
-    /* Ogólne style strony / General page styles */
-    body {
-      font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-      margin: 0;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: #e2e8f0;
-      display: flex;
-      justify-content: center;
-      padding: 30px 10px;
-    }
-    /* Stylizacja głównego kontenera / Styling of the main container */
-    .container {
-      max-width: 1000px;
-      width: 100%;
-      background: rgba(15, 23, 42, 0.85);
-      padding: 24px;
-      border-radius: 12px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
-      position: relative; /* Dla pozycjonowania przełącznika języka i stopki / For positioning the language switcher and footer */
-    }
-    /* Styl nagłówków sekcji / Section headers styling */
-    h2 {
-      margin-top: 30px;
-      border-bottom: 2px solid #1d4ed8;
-      padding-bottom: 10px;
-      color: #bfdbfe;
-      letter-spacing: 0.5px;
-    }
-    /* Styl etykiet pól formularza / Styling of form field labels */
-    label {
-      font-weight: 600;
-    }
-    /* Styl pól wejściowych liczbowych i tekstowych / Styling of numeric and text input fields */
-    input[type="number"],
-    input[type="text"] {
-      width: 80px;
-      padding: 4px;
-      margin: 2px;
-      text-align: center;
-      border: 1px solid #334155;
-      border-radius: 6px;
-      background: #0b1729;
-      color: #e2e8f0;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-    /* Oznaczenie pól z nieprawidłowymi wartościami / Marking fields with invalid values */
-    input[type="number"]:invalid,
-    input[type="text"]:invalid {
-      border-color: red;
-    }
-    /* Styl tabeli / Table styling */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid #1f2937;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    /* Styl komórek tabeli / Table cell styling */
-    th, td {
-      border: 1px solid #1f2937;
-      padding: 10px 8px;
-      text-align: center;
-      color: #e2e8f0;
-    }
-    /* Styl nagłówków tabeli / Table header styling */
-    th {
-      background: linear-gradient(135deg, #1d4ed8, #3b82f6);
-      color: #e2e8f0;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    /* Styl sekcji XP / XP section styling */
-    .xp-section {
-      margin-bottom: 10px;
-    }
-    /* Styl komunikatów o błędach / Error message styling */
-    .error-message {
-      color: red;
-      min-height: 20px;
-      margin-bottom: 10px;
-      font-weight: bold;
-    }
-    /* Szary kolor dla atrybutów powyżej 8 / Grey color for attributes above 8 */
-    input.attribute-high {
-      background-color: #475569 !important;
-    }
-    /* Stylizacja pól talentów / Styling for talent fields */
-    textarea.talent-name {
-      width: 160px;
-      height: 40px;
-      font-size: 16px;
-      padding: 8px;
-      margin: 2px;
-      text-align: center;
-      border: 1px solid #334155;
-      border-radius: 6px;
-      background: #0b1729;
-      color: #e2e8f0;
-      resize: none;
-      overflow: hidden;
-      word-wrap: break-word;
-      white-space: pre-wrap;
-    }
-    /* Styl stopki / Footer styling */
-    .footer {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      font-size: 12px;
-      font-style: italic;
-    }
-    /* Responsywność dla mniejszych ekranów / Responsiveness for smaller screens */
-    @media (max-width: 600px) {
-      input[type="number"],
-      input[type="text"] {
-        width: 60px;
-      }
-      textarea.talent-name {
-        width: 120px;
-        height: 30px;
-        font-size: 14px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- Główny kontener strony / Main page container -->
-  <div class="container">
+  <div class="wrapper">
     <!-- Przełącznik języka w prawym górnym rogu / Language switcher in the top right corner -->
-    <div style="position: absolute; top: 10px; right: 10px;">
+    <div class="language-switcher">
       <select id="languageSelect">
         <option value="pl">Polski</option>
         <option value="en">English</option>
       </select>
     </div>
+
+    <h1>Tworzenie Postaci</h1>
+    <p class="subtitle">Zaplanuj rozwój bohatera w klimacie Wrath & Glory.</p>
 
     <!-- Sekcja XP / XP Section -->
     <div class="xp-section">
@@ -156,8 +30,8 @@
     <div class="error-message" id="errorMessage"> </div>
     
     <!-- Sekcja Atrybutów / Attributes Section -->
-    <h2 id="attributesHeader">Atrybuty</h2>
-    <table class="attributes-table">
+    <h2 class="section-title" id="attributesHeader">Atrybuty</h2>
+    <table class="attributes-table table">
       <tr>
         <th id="attrLabel1">S</th>
         <th id="attrLabel2">Wt</th>
@@ -179,8 +53,8 @@
     </table>
     
     <!-- Sekcja Umiejętności / Skills Section -->
-    <h2 id="skillsHeader">Umiejętności</h2>
-    <table class="skills-table">
+    <h2 class="section-title" id="skillsHeader">Umiejętności</h2>
+    <table class="skills-table table">
       <tr>
         <th id="skillHeader1">Umiejętność</th>
         <th id="skillHeader2">Wartość</th>
@@ -244,8 +118,8 @@
     </table>
     
     <!-- Sekcja Talentów / Talents Section -->
-    <h2 id="talentsHeader">Talenty, wiara, moce psioniczne, archetypy, pakiety wyniesienia i inne</h2>
-    <table class="talents-table">
+    <h2 class="section-title" id="talentsHeader">Talenty, wiara, moce psioniczne, archetypy, pakiety wyniesienia i inne</h2>
+    <table class="talents-table table">
       <tr>
         <th id="talentHeader1">Nazwa</th>
         <th id="talentHeader2">Koszt</th>
