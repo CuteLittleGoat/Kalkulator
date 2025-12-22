@@ -3,78 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Wrath & Glory - Narzędzia</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #4cff91;
-      --glow: 0 0 10px rgba(76, 255, 145, 0.7), 0 0 25px rgba(76, 255, 145, 0.45);
-      --bg: #05080f;
-      --panel: rgba(12, 18, 25, 0.82);
-      --border: rgba(76, 255, 145, 0.35);
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #03050a, #0c1220 55%, #050910);
-      color: var(--primary);
-      font-family: 'Orbitron', 'Segoe UI', sans-serif;
-      letter-spacing: 0.6px;
-      text-shadow: var(--glow);
-    }
-    .wrapper {
-      width: min(900px, 95vw);
-      padding: 30px;
-      background: var(--panel);
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      box-shadow: var(--glow), 0 30px 60px rgba(0, 0, 0, 0.35);
-      text-align: center;
-    }
-    h1 {
-      margin: 0 0 18px;
-      font-size: clamp(26px, 6vw, 38px);
-      text-transform: uppercase;
-    }
-    p.subtitle {
-      margin: 0 0 28px;
-      color: rgba(76, 255, 145, 0.8);
-      font-size: 1rem;
-    }
-    .actions {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      justify-items: center;
-    }
-    a.button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 20px;
-      width: 100%;
-      max-width: 320px;
-      color: #0b0f14;
-      background: linear-gradient(135deg, rgba(76, 255, 145, 0.9), rgba(76, 255, 145, 0.65));
-      border: 1px solid rgba(76, 255, 145, 0.55);
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      box-shadow: var(--glow), inset 0 0 10px rgba(255, 255, 255, 0.05);
-      transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
-    }
-    a.button:hover {
-      transform: translateY(-2px) scale(1.01);
-      box-shadow: 0 0 12px rgba(76, 255, 145, 0.7), 0 0 26px rgba(76, 255, 145, 0.5);
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main class="wrapper">
