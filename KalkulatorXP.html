@@ -23,23 +23,23 @@
           </thead>
           <tbody>
             <tr>
-              <td><input type="number" class="current" min="1" max="12" step="1" value="1"></td>
-              <td><input type="number" class="target" min="1" max="12" step="1" value="1"></td>
+              <td><input type="number" class="current" min="0" max="12" step="1" value="0"></td>
+              <td><input type="number" class="target" min="0" max="12" step="1" value="0"></td>
               <td class="cost">0</td>
             </tr>
             <tr>
-              <td><input type="number" class="current" min="1" max="12" step="1" value="1"></td>
-              <td><input type="number" class="target" min="1" max="12" step="1" value="1"></td>
+              <td><input type="number" class="current" min="0" max="12" step="1" value="0"></td>
+              <td><input type="number" class="target" min="0" max="12" step="1" value="0"></td>
               <td class="cost">0</td>
             </tr>
             <tr>
-              <td><input type="number" class="current" min="1" max="12" step="1" value="1"></td>
-              <td><input type="number" class="target" min="1" max="12" step="1" value="1"></td>
+              <td><input type="number" class="current" min="0" max="12" step="1" value="0"></td>
+              <td><input type="number" class="target" min="0" max="12" step="1" value="0"></td>
               <td class="cost">0</td>
             </tr>
             <tr>
-              <td><input type="number" class="current" min="1" max="12" step="1" value="1"></td>
-              <td><input type="number" class="target" min="1" max="12" step="1" value="1"></td>
+              <td><input type="number" class="current" min="0" max="12" step="1" value="0"></td>
+              <td><input type="number" class="target" min="0" max="12" step="1" value="0"></td>
               <td class="cost">0</td>
             </tr>
           </tbody>
@@ -87,7 +87,7 @@
 
   <script>
     const attributeCosts = {
-      1: 0, 2: 4, 3: 10, 4: 20, 5: 35, 6: 55, 7: 80, 8: 110, 9: 145, 10: 185, 11: 230, 12: 280
+      0: 0, 1: 0, 2: 4, 3: 10, 4: 20, 5: 35, 6: 55, 7: 80, 8: 110, 9: 145, 10: 185, 11: 230, 12: 280
     };
     const skillCosts = {
       0: 0, 1: 2, 2: 6, 3: 12, 4: 20, 5: 30, 6: 42, 7: 56, 8: 72
@@ -124,7 +124,7 @@
     }
 
     function recalcAll() {
-      const attrCost = recalcTable('attributesTable', attributeCosts, 1, 12);
+      const attrCost = recalcTable('attributesTable', attributeCosts, 0, 12);
       const skillCost = recalcTable('skillsTable', skillCosts, 0, 8);
       document.getElementById('totalXp').textContent = attrCost + skillCost;
     }
