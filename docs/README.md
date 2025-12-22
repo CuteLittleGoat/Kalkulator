@@ -1,0 +1,30 @@
+# Kalkulator Wrath & Glory – przegląd użytkowy
+
+Ten projekt to zbiór statycznych stron HTML do obliczania kosztów rozwoju postaci oraz szybkiego planowania atrybutów i umiejętności w systemie **Wrath & Glory**. Wszystko działa lokalnie w przeglądarce – nie wymaga serwera ani dodatkowych bibliotek.
+
+## Jak korzystać z aplikacji
+1. Otwórz `index.html` bezpośrednio w przeglądarce (dwuklik lub przeciągnięcie pliku do okna przeglądarki).
+2. Z ekranu startowego wybierz odpowiednią stronę narzędzia:
+   - **KalkulatorXP.html** – liczy koszt rozwoju atrybutów i umiejętności na podstawie wartości początkowych oraz docelowych.
+   - **TworzeniePostaci.html** – arkusz do spisywania kluczowych elementów postaci i planowania wydatków XP.
+3. Strony korzystają z lokalnego CSS (`style.css`) i wbudowanych skryptów, więc działają offline.
+
+## Aktualizowanie danych i dostosowywanie narzędzi
+- **Zmiana limitów lub tabel**: edytuj odpowiednie tabele w plikach HTML; logika przeliczeń jest osadzona w samych stronach, więc korekty kolumn/wierszy można robić bez dodatkowych zależności.
+- **Dodawanie nowych sekcji**: kopiuj istniejące bloki formularzy w `KalkulatorXP.html` lub `TworzeniePostaci.html`, pamiętając o zachowaniu klas i identyfikatorów używanych przez skrypty.
+- **Styl wizualny**: modyfikacje kolorów, czcionek lub siatki układu wykonuj w `style.css`, co automatycznie odświeży wygląd wszystkich narzędzi.
+
+## Struktura katalogów
+```
+.
+├── docs/
+│   ├── README.md            # instrukcje użytkowe (ten plik)
+│   └── Documentation.md     # szczegółowy opis kodu i logiki
+├── Old/                     # materiały źródłowe poprzedniej wersji
+│   ├── HowToUse_Org.pdf
+│   └── Kalkulator_Org.html
+├── index.html               # strona startowa
+├── KalkulatorXP.html        # kalkulator wydatków XP
+├── TworzeniePostaci.html    # arkusz tworzenia postaci
+└── style.css                # wspólny styl graficzny
+```
