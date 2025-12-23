@@ -9,6 +9,10 @@ Ten projekt to zbiór statycznych stron HTML do obliczania kosztów rozwoju post
    - **TworzeniePostaci.html** – arkusz do spisywania kluczowych elementów postaci i planowania wydatków XP.
 3. Strony korzystają z lokalnego CSS (`kalkulatorxp.css`) i wbudowanych skryptów, więc działają offline (fonty z Google Fonts mają własny fallback).
 
+> ℹ️ **Uwaga dotycząca urządzeń mobilnych**
+> 
+> Autodopasowanie pól w `TworzeniePostaci.html` pogarsza wygląd arkusza w pionowej orientacji ekranów mobilnych. Korzystanie z tej strony w takim układzie nie jest zalecane – aplikację najlepiej otwierać na komputerze PC.
+
 ## Aktualizowanie danych i dostosowywanie narzędzi
 - **Zmiana limitów lub tabel**: edytuj odpowiednie tabele w plikach HTML; logika przeliczeń jest osadzona w samych stronach, więc korekty kolumn/wierszy można robić bez dodatkowych zależności.
 - **Dodawanie nowych sekcji**: kopiuj istniejące bloki formularzy w `KalkulatorXP.html` lub `TworzeniePostaci.html`, pamiętając o zachowaniu klas i identyfikatorów używanych przez skrypty.
