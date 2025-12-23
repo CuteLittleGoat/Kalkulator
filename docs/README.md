@@ -7,12 +7,12 @@ Ten projekt to zbiór statycznych stron HTML do obliczania kosztów rozwoju post
 2. Z ekranu startowego wybierz odpowiednią stronę narzędzia:
    - **KalkulatorXP.html** – liczy koszt rozwoju atrybutów i umiejętności na podstawie wartości początkowych oraz docelowych.
    - **TworzeniePostaci.html** – arkusz do spisywania kluczowych elementów postaci i planowania wydatków XP.
-3. Strony korzystają z lokalnego CSS (`style.css`) i wbudowanych skryptów, więc działają offline.
+3. Strony korzystają z lokalnego CSS (`kalkulatorxp.css`) i wbudowanych skryptów, więc działają offline (fonty z Google Fonts mają własny fallback).
 
 ## Aktualizowanie danych i dostosowywanie narzędzi
 - **Zmiana limitów lub tabel**: edytuj odpowiednie tabele w plikach HTML; logika przeliczeń jest osadzona w samych stronach, więc korekty kolumn/wierszy można robić bez dodatkowych zależności.
 - **Dodawanie nowych sekcji**: kopiuj istniejące bloki formularzy w `KalkulatorXP.html` lub `TworzeniePostaci.html`, pamiętając o zachowaniu klas i identyfikatorów używanych przez skrypty.
-- **Styl wizualny**: modyfikacje kolorów, czcionek lub siatki układu wykonuj w `style.css`, co automatycznie odświeży wygląd wszystkich narzędzi.
+- **Styl wizualny**: modyfikacje kolorów, czcionek lub siatki układu wykonuj w `kalkulatorxp.css`, co automatycznie odświeży wygląd `KalkulatorXP.html` i `TworzeniePostaci.html`.
 
 ## Struktura katalogów
 ```
@@ -23,8 +23,9 @@ Ten projekt to zbiór statycznych stron HTML do obliczania kosztów rozwoju post
 ├── Old/                     # materiały źródłowe poprzedniej wersji
 │   ├── HowToUse_Org.pdf
 │   └── Kalkulator_Org.html
-├── index.html               # strona startowa
+├── index.html               # strona startowa ze stylami inline
 ├── KalkulatorXP.html        # kalkulator wydatków XP
 ├── TworzeniePostaci.html    # arkusz tworzenia postaci
-└── style.css                # wspólny styl graficzny
+├── kalkulatorxp.css         # główny arkusz stylów dla obu narzędzi
+└── style.css                # poprzednia wersja stylu (archiwum)
 ```

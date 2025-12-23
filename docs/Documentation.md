@@ -1,7 +1,7 @@
 # Documentation – Wrath & Glory tools internals
 
 ## Overview
-The application consists of static HTML pages styled by a shared `style.css`. Each page embeds its own JavaScript to keep all calculations client-side. There is no build step or external dependency: opening the HTML files in a modern browser is enough.
+The application consists of static HTML pages styled by a shared `kalkulatorxp.css`. Each page embeds its own JavaScript to keep all calculations client-side. There is no build step or external dependency: opening the HTML files in a modern browser is enough; Google Fonts are optional and have fallbacks.
 
 ## Page responsibilities
 - **index.html**: Landing page that lists available tools and links to them. Adjust the navigation anchors if you add or rename tools.
@@ -9,9 +9,9 @@ The application consists of static HTML pages styled by a shared `style.css`. Ea
 - **TworzeniePostaci.html**: Provides a structured character sheet. Sections are organized with semantic HTML to keep the layout responsive. Fields can be duplicated or retitled to fit custom campaigns without breaking the page.
 
 ## Styling and layout
-The neon-inspired aesthetic is centralized in **style.css**. Shared classes handle grid layouts for tables, button states, and typography. To change the look and feel:
-- Update color variables and font declarations at the top of `style.css`.
-- Adjust grid definitions and media queries to refine spacing or responsiveness.
+The neon-inspired aesthetic is centralized in **kalkulatorxp.css** (used by both calculators), while `index.html` carries its own inline styles. To change the look and feel:
+- Update color variables and font declarations at the top of `kalkulatorxp.css`.
+- Adjust grid definitions and media queries in the same file to refine spacing or responsiveness.
 - Reuse existing utility classes when adding new elements to maintain consistency.
 
 ## Data and logic updates
@@ -28,8 +28,9 @@ project root
 ├── Old/                     # legacy reference materials
 │   ├── HowToUse_Org.pdf
 │   └── Kalkulator_Org.html
-├── index.html               # navigation landing page
+├── index.html               # navigation landing page (inline styles)
 ├── KalkulatorXP.html        # XP calculator with embedded scripts
 ├── TworzeniePostaci.html    # character sheet form
-└── style.css                # shared styling for all pages
+├── kalkulatorxp.css         # shared styling for both calculators
+└── style.css                # legacy stylesheet kept for reference
 ```
