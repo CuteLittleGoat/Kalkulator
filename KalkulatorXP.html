@@ -1,89 +1,128 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kalkulator XP</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="kalkulatorxp.css">
 </head>
 <body>
-  <main class="wrapper">
-    <h1>Kalkulator Punktów Doświadczenia</h1>
-    <p class="subtitle">Oblicz koszt rozwoju atrybutów i umiejętności.</p>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="sigil">⟦⟧</div>
+        <div>
+          <div class="title">Kalkulator XP</div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn secondary" id="btnReset" title="Ustaw wszystkie pola na 0">Resetuj wartości</button>
+      </div>
+    </header>
 
-    <div class="tables-grid">
-      <section>
-        <h2 class="section-title">Atrybuty</h2>
-        <table class="table calc-table" id="attributesTable">
-          <thead>
-            <tr>
-              <th>Aktualna wartość</th>
-              <th>Docelowa wartość</th>
-              <th>Koszt XP</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><input type="number" class="current" min="0" max="12" step="1" value="0"></td>
-              <td><input type="number" class="target" min="0" max="12" step="1" value="0"></td>
-              <td class="cost">0</td>
-            </tr>
-            <tr>
-              <td><input type="number" class="current" min="0" max="12" step="1" value="0"></td>
-              <td><input type="number" class="target" min="0" max="12" step="1" value="0"></td>
-              <td class="cost">0</td>
-            </tr>
-            <tr>
-              <td><input type="number" class="current" min="0" max="12" step="1" value="0"></td>
-              <td><input type="number" class="target" min="0" max="12" step="1" value="0"></td>
-              <td class="cost">0</td>
-            </tr>
-            <tr>
-              <td><input type="number" class="current" min="0" max="12" step="1" value="0"></td>
-              <td><input type="number" class="target" min="0" max="12" step="1" value="0"></td>
-              <td class="cost">0</td>
-            </tr>
-          </tbody>
-        </table>
+    <main class="main calculator">
+      <aside class="panel">
+        <div class="panelHeader">
+          <span class="caret">▸</span><span class="panelTitle">INSTRUKCJE</span>
+        </div>
+        <div class="panelBody">
+          <div class="hint">
+            <div>▸ Wprowadź aktualną i docelową wartość dla każdej pozycji.</div>
+            <div>▸ Suma XP aktualizuje się automatycznie przy zmianach.</div>
+            <div>▸ Przycisk <b>Resetuj wartości</b> czyści wszystkie pola.</div>
+          </div>
+          <div class="totalBox">
+            <div class="metricLabel">Całkowity koszt XP</div>
+            <div class="metricValue" id="totalXp">0</div>
+          </div>
+        </div>
+      </aside>
+
+      <section class="workspace">
+        <nav class="tabs"><div class="tab active">Obliczenia XP</div></nav>
+        <div class="tableWrap">
+          <div class="tableFrame">
+            <div class="tableViewport">
+              <div class="calcGrid">
+                <section class="calcCard">
+                  <header class="cardHeader">Atrybuty</header>
+                  <table class="dataTable" id="attributesTable">
+                    <thead>
+                      <tr>
+                        <th>Aktualna wartość</th>
+                        <th>Docelowa wartość</th>
+                        <th>Koszt XP</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><input type="number" class="input current" min="0" max="12" step="1" value="0"></td>
+                        <td><input type="number" class="input target" min="0" max="12" step="1" value="0"></td>
+                        <td class="cost num">0</td>
+                      </tr>
+                      <tr>
+                        <td><input type="number" class="input current" min="0" max="12" step="1" value="0"></td>
+                        <td><input type="number" class="input target" min="0" max="12" step="1" value="0"></td>
+                        <td class="cost num">0</td>
+                      </tr>
+                      <tr>
+                        <td><input type="number" class="input current" min="0" max="12" step="1" value="0"></td>
+                        <td><input type="number" class="input target" min="0" max="12" step="1" value="0"></td>
+                        <td class="cost num">0</td>
+                      </tr>
+                      <tr>
+                        <td><input type="number" class="input current" min="0" max="12" step="1" value="0"></td>
+                        <td><input type="number" class="input target" min="0" max="12" step="1" value="0"></td>
+                        <td class="cost num">0</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </section>
+
+                <section class="calcCard">
+                  <header class="cardHeader">Umiejętności</header>
+                  <table class="dataTable" id="skillsTable">
+                    <thead>
+                      <tr>
+                        <th>Aktualna wartość</th>
+                        <th>Docelowa wartość</th>
+                        <th>Koszt XP</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><input type="number" class="input current" min="0" max="8" step="1" value="0"></td>
+                        <td><input type="number" class="input target" min="0" max="8" step="1" value="0"></td>
+                        <td class="cost num">0</td>
+                      </tr>
+                      <tr>
+                        <td><input type="number" class="input current" min="0" max="8" step="1" value="0"></td>
+                        <td><input type="number" class="input target" min="0" max="8" step="1" value="0"></td>
+                        <td class="cost num">0</td>
+                      </tr>
+                      <tr>
+                        <td><input type="number" class="input current" min="0" max="8" step="1" value="0"></td>
+                        <td><input type="number" class="input target" min="0" max="8" step="1" value="0"></td>
+                        <td class="cost num">0</td>
+                      </tr>
+                      <tr>
+                        <td><input type="number" class="input current" min="0" max="8" step="1" value="0"></td>
+                        <td><input type="number" class="input target" min="0" max="8" step="1" value="0"></td>
+                        <td class="cost num">0</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
-
-      <section>
-        <h2 class="section-title">Umiejętności</h2>
-        <table class="table calc-table" id="skillsTable">
-          <thead>
-            <tr>
-              <th>Aktualna wartość</th>
-              <th>Docelowa wartość</th>
-              <th>Koszt XP</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><input type="number" class="current" min="0" max="8" step="1" value="0"></td>
-              <td><input type="number" class="target" min="0" max="8" step="1" value="0"></td>
-              <td class="cost">0</td>
-            </tr>
-            <tr>
-              <td><input type="number" class="current" min="0" max="8" step="1" value="0"></td>
-              <td><input type="number" class="target" min="0" max="8" step="1" value="0"></td>
-              <td class="cost">0</td>
-            </tr>
-            <tr>
-              <td><input type="number" class="current" min="0" max="8" step="1" value="0"></td>
-              <td><input type="number" class="target" min="0" max="8" step="1" value="0"></td>
-              <td class="cost">0</td>
-            </tr>
-            <tr>
-              <td><input type="number" class="current" min="0" max="8" step="1" value="0"></td>
-              <td><input type="number" class="target" min="0" max="8" step="1" value="0"></td>
-              <td class="cost">0</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-    </div>
-
-    <div class="total-cost" aria-live="polite">Całkowity koszt XP: <span id="totalXp">0</span></div>
-  </main>
+    </main>
+  </div>
 
   <script>
     const attributeCosts = {
@@ -132,6 +171,13 @@
     document.querySelectorAll('#attributesTable input, #skillsTable input').forEach(input => {
       input.addEventListener('input', recalcAll);
       input.addEventListener('change', recalcAll);
+    });
+
+    document.getElementById('btnReset').addEventListener('click', () => {
+      document.querySelectorAll('#attributesTable input, #skillsTable input').forEach(input => {
+        input.value = 0;
+      });
+      recalcAll();
     });
 
     recalcAll();
