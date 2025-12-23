@@ -2,8 +2,103 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Wrath & Glory</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="kalkulatorxp.css">
+  <style>
+    body{
+      margin:0;
+      padding:24px 14px;
+      background:var(--bg);
+      color:var(--text);
+      font-family:"Share Tech Mono", Calibri, monospace;
+      line-height:1.5;
+      letter-spacing:.04em;
+    }
+    .wrapper{
+      width:min(1100px, 96vw);
+      margin:0 auto;
+      padding:22px;
+      background:var(--panel);
+      border:1px solid var(--b);
+      border-radius:10px;
+      box-shadow:var(--glow);
+      position:relative;
+    }
+    h1{
+      margin:0 0 12px;
+      font-family:"Orbitron","Share Tech Mono", Calibri, sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-weight:600;
+      color:var(--code);
+      text-shadow:var(--glowH);
+    }
+    .subtitle{margin:0 0 20px; color:var(--text2);}
+    .section-title{
+      margin:24px 0 12px;
+      padding-bottom:8px;
+      border-bottom:1px solid var(--div);
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-family:"Orbitron","Share Tech Mono", Calibri, sans-serif;
+      color:var(--code);
+    }
+    .xp-section{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      margin-bottom:8px;
+    }
+    .language-switcher{position:absolute; top:16px; right:16px;}
+    .language-switcher select{min-width:120px;}
+    .table{
+      width:100%;
+      border-collapse:collapse;
+      border:1px solid var(--div);
+      background:var(--panel2);
+      box-shadow:var(--glow);
+      margin-bottom:16px;
+    }
+    .table th,
+    .table td{
+      border-bottom:1px solid var(--div);
+      padding:9px 8px;
+      text-align:center;
+    }
+    .table th{
+      background:linear-gradient(180deg, rgba(111,227,140,.08), rgba(111,227,140,.03));
+      color:var(--code);
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      font-family:"Orbitron","Share Tech Mono", Calibri, sans-serif;
+    }
+    .table tr:nth-child(even){background:var(--zebra);}
+    .table tr:hover{background:var(--hover);}
+    input[type="number"],
+    select,
+    textarea{
+      width:100%;
+      padding:9px 10px;
+      border-radius:6px;
+      border:1px solid var(--b);
+      background:var(--bg);
+      color:var(--text);
+      text-align:center;
+      outline:none;
+      font-family:"Share Tech Mono", Calibri, monospace;
+    }
+    textarea{resize:none; text-align:left; height:46px;}
+    input[type="number"]:focus,
+    select:focus,
+    textarea:focus{box-shadow:0 0 0 3px rgba(111,227,140,.18);}
+    .error-message{min-height:20px; color:var(--red); margin:6px 0 2px;}
+    .footer{margin-top:18px; color:var(--muted); text-align:center; letter-spacing:.08em;}
+  </style>
 </head>
 <body>
   <!-- Główny kontener strony / Main page container -->
