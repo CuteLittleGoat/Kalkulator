@@ -112,7 +112,7 @@
       </select>
     </div>
 
-    <h1>Tworzenie Postaci</h1>
+    <h1 id="pageTitle">Tworzenie Postaci</h1>
 
     <!-- Sekcja XP / XP Section -->
     <div class="xp-section">
@@ -265,6 +265,7 @@
       const translations = {
         pl: {
           labels: {
+            pageTitle: 'Tworzenie Postaci',
             xpPool: 'Pula XP do wydania:',
             remainingXP: 'Pozostało:',
             attributesHeader: 'Atrybuty',
@@ -291,6 +292,7 @@
         },
         en: {
           labels: {
+            pageTitle: 'Character Creation',
             xpPool: 'XP Pool:',
             remainingXP: 'Remaining XP:',
             attributesHeader: 'Attributes',
@@ -332,6 +334,7 @@
       function updateLanguage(lang) {
         currentLanguage = lang;
         const t = translations[lang];
+        document.getElementById('pageTitle').innerText = t.labels.pageTitle;
         document.getElementById('xpPoolLabel').innerText = t.labels.xpPool;
         document.getElementById('xpRemainingLabel').innerHTML = `${t.labels.remainingXP} <strong id="xpRemaining">100</strong>`;
         document.getElementById('attributesHeader').innerText = t.labels.attributesHeader;
