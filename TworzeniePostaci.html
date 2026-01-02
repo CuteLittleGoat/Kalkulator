@@ -54,8 +54,27 @@
       flex-wrap:wrap;
       margin-bottom:8px;
     }
-    .language-switcher{position:absolute; top:16px; right:16px;}
+    .language-switcher{
+      position:absolute;
+      top:16px;
+      right:16px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      align-items:flex-end;
+    }
     .language-switcher select{min-width:120px;}
+    .language-switcher button{
+      padding:8px 12px;
+      border-radius:6px;
+      border:1px solid var(--b);
+      background:var(--panel2);
+      color:var(--text);
+      font-family:"Share Tech Mono", Calibri, monospace;
+      letter-spacing:.06em;
+      cursor:pointer;
+    }
+    .language-switcher button:hover{background:var(--hover);}
     .table{
       width:100%;
       border-collapse:collapse;
@@ -110,6 +129,7 @@
         <option value="pl">Polski</option>
         <option value="en">English</option>
       </select>
+      <button type="button" id="manualButton">Instrukcja</button>
     </div>
 
     <h1 id="pageTitle">Tworzenie Postaci</h1>
@@ -273,7 +293,8 @@
             talentsHeader: 'Talenty, wiara, moce psioniczne, archetypy, pakiety wyniesienia i inne',
             skillsTableHeaders: ['Umiejętność', 'Wartość', 'Umiejętność', 'Wartość'],
             talentsTableHeaders: ['Nazwa', 'Koszt', 'Nazwa', 'Koszt'],
-            footerText: 'Wykonane przez Spaczoną Inteligencję'
+            footerText: 'Wykonane przez Spaczoną Inteligencję',
+            manualButton: 'Instrukcja'
           },
           attributes: ['S', 'Wt', 'Zr', 'I', 'SW', 'Int', 'Ogd'],
           skillsColumn1: [
@@ -300,7 +321,8 @@
             talentsHeader: 'Talents, Faith, Psionic Powers, Archetypes, Ascension Packages, and Others',
             skillsTableHeaders: ['Skill', 'Value', 'Skill', 'Value'],
             talentsTableHeaders: ['Name', 'Cost', 'Name', 'Cost'],
-            footerText: 'Made by Abominable Intelligence'
+            footerText: 'Made by Abominable Intelligence',
+            manualButton: 'Manual'
           },
           attributes: ['S', 'T', 'A', 'I', 'Will', 'Int', 'Fell'],
           skillsColumn1: [
@@ -349,6 +371,7 @@
         document.getElementById('talentHeader3').innerText = t.labels.talentsTableHeaders[2];
         document.getElementById('talentHeader4').innerText = t.labels.talentsTableHeaders[3];
         document.getElementById('footerText').innerText = t.labels.footerText;
+        document.getElementById('manualButton').innerText = t.labels.manualButton;
 
         // Aktualizacja etykiet atrybutów / Update attribute labels
         for (let i = 1; i <= 7; i++) {
@@ -520,6 +543,11 @@
       // --- Podpinanie zdarzeń do pól tekstowych talentów / Attaching events to talent text fields ---
       document.querySelectorAll('textarea.talent-name').forEach(ta => {
         ta.addEventListener('input', () => adjustTalentFontSize(ta));
+      });
+
+      document.getElementById('manualButton').addEventListener('click', () => {
+        const manualPath = `HowToUse/${currentLanguage}.pdf`;
+        window.open(manualPath, '_blank', 'noopener');
       });
 
       // --- Inicjalizacja domyślnych wartości / Initialization of default values ---
